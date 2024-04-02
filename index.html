@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OUR CALCULATOR</title>
+    <style>
+      .input {
+        width: 320px;
+        height: 20px;
+        font-size: large;
+        font-weight: bolder;
+        border-bottom: 5px black solid;
+      }
+      .numeric-button {
+        width: 100px;
+        height: 40px;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-size: larger;
+        font-weight: bold;
+      }
+      .slogan {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 315px;
+        height: 30px;
+        background-color: darkgray;
+        font-size: larger;
+        font-weight: bolder;
+        margin-top: 20px;
+        border-bottom: 5px rgba(0, 255, 21, 0.304) solid;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <input
+        type="text"
+        placeholder="Enter something"
+        id="input"
+        class="input"
+        disabled
+      />
+      <div class="numberContainer">
+        <input
+          type="button"
+          value="1"
+          class="numeric-button"
+          onclick="dispaly('1')"
+        />
+        <input
+          type="button"
+          value="2"
+          class="numeric-button"
+          onclick="dispaly('2')"
+        />
+        <input
+          type="button"
+          value="3"
+          class="numeric-button"
+          onclick="dispaly('3')"
+        /><br />
+        <input
+          type="button"
+          value="4"
+          class="numeric-button"
+          onclick="dispaly('4')"
+        />
+        <input
+          type="button"
+          value="5"
+          class="numeric-button"
+          onclick="dispaly('5')"
+        />
+        <input
+          type="button"
+          value="6"
+          class="numeric-button"
+          onclick="dispaly('6')"
+        /><br />
+        <input
+          type="button"
+          value="7"
+          class="numeric-button"
+          onclick="dispaly('7')"
+        />
+        <input
+          type="button"
+          value="8"
+          class="numeric-button"
+          onclick="dispaly('8')"
+        />
+        <input
+          type="button"
+          value="9"
+          class="numeric-button"
+          onclick="dispaly('9')"
+        />
+      </div>
+      <div class="operations-container">
+        <input
+          type="button"
+          value="+"
+          class="numeric-button"
+          onclick="dispaly('+')"
+        />
+        <input
+          type="button"
+          value="0"
+          class="numeric-button"
+          onclick="dispaly('0')"
+        />
+        <input
+          type="button"
+          value="-"
+          class="numeric-button"
+          onclick="dispaly('-')"
+        /><br />
+        <input
+          type="button"
+          value="*"
+          class="numeric-button"
+          onclick="dispaly('*')"
+        />
+        <input
+          type="button"
+          value="."
+          class="numeric-button"
+          onclick="dispaly('.')"
+        />
+        <input
+          type="button"
+          value="/"
+          class="numeric-button"
+          onclick="dispaly('/')"
+        />
+      </div>
+      <div class="cleaner">
+        <button id="clear" class="numeric-button" onclick="clearScreen()">
+          CLEAR
+        </button>
+        <button id="execute" class="numeric-button" onclick="calculate()">
+          =
+        </button>
+        <button id="delete" class="numeric-button">DELETE</button>
+      </div>
+      <div class="slogan">कृपया गणना सावधानीपूर्वक करे|</div>
+      <div class="slogan">DO CALCULATION CAREFULLY</div>
+    </center>
+    <script>
+      function dispaly(value) {
+        if (value === 0) {
+          if ("" != document.getElementById("input").value) {
+            document.getElementById("input").value += value;
+          }
+        } else {
+          document.getElementById("input").value += value;
+        }
+      }
+      function clearScreen() {
+        document.getElementById("input").value = "";
+      }
+      function calculate() {
+        var values = document.getElementById("input").value;
+        var result = eval(values);
+        document.getElementById("input").value = result;
+      }
+      function deleteDigit(){
+        
+      }
+    </script>
+  </body>
+</html>
