@@ -145,7 +145,9 @@
         <button id="execute" class="numeric-button" onclick="calculate()">
           =
         </button>
-        <button id="delete" class="numeric-button">DELETE</button>
+        <button id="delete" class="numeric-button" onclick="deleteDigit()">
+          DELETE
+        </button>
       </div>
       <div class="slogan">कृपया गणना सावधानीपूर्वक करे|</div>
       <div class="slogan">DO CALCULATION CAREFULLY</div>
@@ -168,8 +170,12 @@
         var result = eval(values);
         document.getElementById("input").value = result;
       }
-      function deleteDigit(){
-        
+      function deleteDigit() {
+        let inputItem = document.getElementById("input").value;
+        if (inputItem.length > 0) {
+          let newItem = inputItem.slice(0, -1);
+          document.getElementById("input").value = newItem;
+        }
       }
     </script>
   </body>
