@@ -1,182 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OUR CALCULATOR</title>
-    <style>
-      .input {
-        width: 320px;
-        height: 20px;
-        font-size: large;
-        font-weight: bolder;
-        border-bottom: 5px black solid;
-      }
-      .numeric-button {
-        width: 100px;
-        height: 40px;
-        margin-top: 10px;
-        border-radius: 5px;
-        font-size: larger;
-        font-weight: bold;
-      }
-      .slogan {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 315px;
-        height: 30px;
-        background-color: darkgray;
-        font-size: larger;
-        font-weight: bolder;
-        margin-top: 20px;
-        border-bottom: 5px rgba(0, 255, 21, 0.304) solid;
-        border-radius: 5px;
-      }
-    </style>
-  </head>
-  <body>
-    <center>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="calculator-container">
+    <div class="calculator">
       <input
         type="text"
-        placeholder="Enter something"
+        placeholder="0"
         id="input"
-        class="input"
+        class="calculator-screen"
         disabled
       />
-      <div class="numberContainer">
-        <input
-          type="button"
-          value="1"
-          class="numeric-button"
-          onclick="dispaly('1')"
-        />
-        <input
-          type="button"
-          value="2"
-          class="numeric-button"
-          onclick="dispaly('2')"
-        />
-        <input
-          type="button"
-          value="3"
-          class="numeric-button"
-          onclick="dispaly('3')"
-        /><br />
-        <input
-          type="button"
-          value="4"
-          class="numeric-button"
-          onclick="dispaly('4')"
-        />
-        <input
-          type="button"
-          value="5"
-          class="numeric-button"
-          onclick="dispaly('5')"
-        />
-        <input
-          type="button"
-          value="6"
-          class="numeric-button"
-          onclick="dispaly('6')"
-        /><br />
-        <input
-          type="button"
-          value="7"
-          class="numeric-button"
-          onclick="dispaly('7')"
-        />
-        <input
-          type="button"
-          value="8"
-          class="numeric-button"
-          onclick="dispaly('8')"
-        />
-        <input
-          type="button"
-          value="9"
-          class="numeric-button"
-          onclick="dispaly('9')"
-        />
+      <div class="calculator-keys">
+        <div class="number-container">
+          <button type="button" class="calculator-key numeric" value="7">7</button>
+          <button type="button" class="calculator-key numeric" value="8">8</button>
+          <button type="button" class="calculator-key numeric" value="9">9</button>
+          <button type="button" class="calculator-key numeric" value="4">4</button>
+          <button type="button" class="calculator-key numeric" value="5">5</button>
+          <button type="button" class="calculator-key numeric" value="6">6</button>
+          <button type="button" class="calculator-key numeric" value="1">1</button>
+          <button type="button" class="calculator-key numeric" value="2">2</button>
+          <button type="button" class="calculator-key numeric" value="3">3</button>
+          <button type="button" class="calculator-key numeric zero" value="0">0</button>
+          <button type="button" class="calculator-key numeric" value=".">.</button>
+        </div>
+        <div class="operation-container">
+          <button type="button" class="calculator-key operation" value="+">+</button>
+          <button type="button" class="calculator-key operation" value="-">-</button>
+          <button type="button" class="calculator-key operation" value="*">&times;</button>
+          <button type="button" class="calculator-key operation" value="/">&divide;</button>
+        </div>
+        <div class="function-container">
+          <button type="button" class="calculator-key function clear" id="clear">AC</button>
+          <button type="button" class="calculator-key function delete" id="delete">DEL</button>
+          <button type="button" class="calculator-key function equals" id="execute">=</button>
+        </div>
       </div>
-      <div class="operations-container">
-        <input
-          type="button"
-          value="+"
-          class="numeric-button"
-          onclick="dispaly('+')"
-        />
-        <input
-          type="button"
-          value="0"
-          class="numeric-button"
-          onclick="dispaly('0')"
-        />
-        <input
-          type="button"
-          value="-"
-          class="numeric-button"
-          onclick="dispaly('-')"
-        /><br />
-        <input
-          type="button"
-          value="*"
-          class="numeric-button"
-          onclick="dispaly('*')"
-        />
-        <input
-          type="button"
-          value="."
-          class="numeric-button"
-          onclick="dispaly('.')"
-        />
-        <input
-          type="button"
-          value="/"
-          class="numeric-button"
-          onclick="dispaly('/')"
-        />
+      <div class="calculator-slogan">
+        <div class="slogan-hindi">कृपया गणना सावधानीपूर्वक करे|</div>
+        <div class="slogan-english">DO CALCULATION CAREFULLY</div>
       </div>
-      <div class="cleaner">
-        <button id="clear" class="numeric-button" onclick="clearScreen()">
-          CLEAR
-        </button>
-        <button id="execute" class="numeric-button" onclick="calculate()">
-          =
-        </button>
-        <button id="delete" class="numeric-button" onclick="deleteDigit()">
-          DELETE
-        </button>
-      </div>
-      <div class="slogan">कृपया गणना सावधानीपूर्वक करे|</div>
-      <div class="slogan">DO CALCULATION CAREFULLY</div>
-    </center>
-    <script>
-      function dispaly(value) {
-        if (value === 0) {
-          if ("" != document.getElementById("input").value) {
-            document.getElementById("input").value += value;
-          }
-        } else {
-          document.getElementById("input").value += value;
-        }
-      }
-      function clearScreen() {
-        document.getElementById("input").value = "";
-      }
-      function calculate() {
-        var values = document.getElementById("input").value;
-        var result = eval(values);
-        document.getElementById("input").value = result;
-      }
-      function deleteDigit() {
-        let inputItem = document.getElementById("input").value;
-        if (inputItem.length > 0) {
-          let newItem = inputItem.slice(0, -1);
-          document.getElementById("input").value = newItem;
-        }
-      }
-    </script>
-  </body>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>
